@@ -21,12 +21,13 @@ data_t cordic_angles[NO_ITER] = {
 void cordiccart2pol(data_t x, data_t y, data_t * r,  data_t * theta)
 {
     // Write your code here
-	#pragma HLS INTERFACE mode=m_axi  port=x bundle=BUS_A
-	#pragma HLS INTERFACE mode=m_axi  port=y bundle=BUS_A
-	#pragma HLS INTERFACE mode=s_axilite port=r bundle=BUS_A
-	#pragma HLS INTERFACE mode=s_axilite port=theta bundle=BUS_A
-	#pragma HLS INTERFACE mode=s_axilite port=return bundle=CTRL
-	
+	#pragma HLS INTERFACE s_axilite port=x  bundle=BUS_A
+	#pragma HLS INTERFACE s_axilite port=y  bundle=BUS_A
+	#pragma HLS INTERFACE s_axilite port=r  bundle=BUS_A
+	#pragma HLS INTERFACE s_axilite port=theta  bundle=BUS_A
+	//return绔彛寰堥噸瑕侊紝瀹氫箟鍚庢墠鑳藉湪block_design杩炴帴涓奱p_ctrl锛屼笌zynq鐨刟xilite鎵嶈兘鎻℃墜
+	#pragma HLS INTERFACE s_axilite port=return
+
 	//decalaration
 	const data_t Kvalues_compensate = 0.6072529350088814;
 	data_t pi_half = 1.570796326794896;
@@ -49,7 +50,7 @@ void cordiccart2pol(data_t x, data_t y, data_t * r,  data_t * theta)
 		angle = -pi_half;
 	}
 
-#pragma HLS PIPELINE
+#pragma HLS PIPELINE II =4
 LOOP_X:for (int i = 0; i < NO_ITER; i++) {
 		if (c_y < 0) {
 			signma = 1;
