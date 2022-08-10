@@ -50,13 +50,10 @@
     - `r`: 极坐标半径
     - `theta`(![](https://render.githubusercontent.com/render/math?math=\theta)): 极坐标角度（与X轴正方向夹角）
 
-    其中，
-    <div align="center">
+    其中，<div align="center">
     <img src="https://render.githubusercontent.com/render/math?math=\huge%20r=\sqrt{x^2%2By^2}">
     </div>
 
-    而
-
-    <div align="center">
+    而 <div align="center">
     <img src="https://render.githubusercontent.com/render/math?math=\huge%20\theta=\arctan{\frac{y}{x}}">
     </div>
